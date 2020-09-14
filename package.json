@@ -1,0 +1,28 @@
+{
+  "name": "twelvedata",
+  "version": "1.0.0",
+  "description": "A simple wrapper around the twelve data API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evzaboun/twelvedata.git"
+  },
+  "keywords": [
+    "stocks",
+    "stockmarket",
+    "api",
+    "twelve",
+    "data",
+    "twelvedata",
+    "twelve-data"
+  ],
+  "author": "Zampounis Evangelos, Zampounis Filippos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evzaboun/twelvedata/issues"
+  },
+  "homepage": "https://github.com/evzaboun/twelvedata#readme"
+}
