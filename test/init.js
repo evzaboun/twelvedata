@@ -1,7 +1,11 @@
 import TwelveData from '../';
 
 test(`initialization without a config throws an error`, () => {
-  expect(() => TwelveData()).toThrow(`Missing config settings: key`);
+  expect(() => TwelveData()).toThrow(`Missing config`);
+});
+
+test(`initialization without a config key throws an error`, () => {
+  expect(() => TwelveData({})).toThrow(`Missing config settings: key`);
 });
 
 test(`initialization with a config is succesfull`, () => {
