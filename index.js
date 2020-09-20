@@ -20,19 +20,7 @@ export default (config = {}) => {
   config.base = `https://api.twelvedata.com/`;
 
   return {
-    earnings: Earnings({
-      ...config,
-      ...{
-        base:
-          '${config.base}${availableEndpoints.earnings}?apikey=${config.key}&',
-      },
-    }),
-    time_series: TimeSeries({
-      ...config,
-      ...{
-        base:
-          '${config.base}${availableEndpoints.time_series}?apikey=${config.key}&',
-      },
-    }),
+    earnings: Earnings(config),
+    timeSeries: TimeSeries(config),
   };
 };
