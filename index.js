@@ -8,7 +8,6 @@ export default (config = {}) => {
   if (config.key === undefined) {
     throw new Error("Missing config settings: key");
   }
-
   // Base url for the client
   config.base = `https://api.twelvedata.com/`;
   config.availableEndpoints = {
