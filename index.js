@@ -9,15 +9,14 @@ export default (config = {}) => {
     throw new Error('Missing config settings: key');
   }
 
-  const availableEndpoints = {
+  // Base url for the client
+  config.base = `https://api.twelvedata.com/`;
+  config.availableEndpoints = {
     earnings: 'earnings',
     time_series: 'time_series',
     complex_data: 'complex_data',
     stocks: 'stocks',
   };
-
-  // Base url for the client
-  config.base = `https://api.twelvedata.com/`;
 
   return {
     earnings: Earnings(config),
