@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/evzaboun/twelvedata/issues"
   },
-  "homepage": "https://github.com/evzaboun/twelvedata#readme"
+  "homepage": "https://github.com/evzaboun/twelvedata#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
 }
