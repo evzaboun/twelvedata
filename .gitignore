@@ -1,2 +1,9 @@
 package-lock.json
+yarn-error.log
+yarn.lock
+
 /node_modules
+/coverage
+
+.vscode/
+.env

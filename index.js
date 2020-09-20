@@ -1,14 +1,13 @@
 "use strict";
 
-import Earnings from "./lib/earnings";
-import TimeSeries from "./lib/timeSeries";
+const Earnings = require("./lib/earnings");
+const TimeSeries = require("./lib/timeSeries");
 
-export default (config = {}) => {
+module.exports = (config) => {
   // Check for API Key
   if (config.key === undefined) {
     throw new Error("Missing config settings: key");
   }
-
   // Base url for the client
   config.base = `https://api.twelvedata.com/`;
   config.availableEndpoints = {
