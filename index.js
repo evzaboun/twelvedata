@@ -19,7 +19,7 @@ export default (config = {}) => {
   };
 
   return {
-    earnings: Earnings(config),
-    timeSeries: TimeSeries(config),
+    earnings: new Earnings(config),
+    timeSeries: new TimeSeries(config),
   };
 };
