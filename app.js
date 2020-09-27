@@ -1,6 +1,6 @@
 require("dotenv").config();
 const config = {
-  base: "https://api.twelvedata.com/",
+  base: "https://api.twelvedata.com",
   key: process.env.API_KEY,
 };
 
@@ -10,6 +10,7 @@ const params = {
   interval:'1min'
 };
 
-const data = twelvedata.timeSeries.getData(params);
+twelvedata.timeSeries.getData(params).then(data => {
+  console.log(data);
+});
 
-console.log(data);
