@@ -5,5 +5,11 @@ const config = {
 };
 
 const twelvedata = require("./index.js")(config);
+const params = {
+  symbol:'AAPL',
+  interval:'1min'
+};
 
-console.log(twelvedata.timeSeries);
+const data = twelvedata.timeSeries.getData(params);
+
+console.log(data);
