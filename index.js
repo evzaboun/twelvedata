@@ -2,6 +2,7 @@
 
 const Earnings = require("./lib/earnings");
 const TimeSeries = require("./lib/timeSeries");
+const ApiUsage = require("./lib/apiUsage");
 
 module.exports = (config) => {
   if (!config) {
@@ -15,5 +16,6 @@ module.exports = (config) => {
   return {
     earnings: new Earnings(config),
     timeSeries: new TimeSeries(config),
+    apiUsage: new ApiUsage(config),
   };
 };
