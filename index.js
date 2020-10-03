@@ -1,8 +1,7 @@
 "use strict";
 
-const Earnings = require("./lib/earnings");
-const TimeSeries = require("./lib/timeSeries");
-const ApiUsage = require("./lib/apiUsage");
+const utils = require("./lib/utilities.js");
+
 
 module.exports = (config) => {
   if (!config) {
@@ -13,9 +12,14 @@ module.exports = (config) => {
     throw new Error("Missing config settings: key");
   }
 
+  const utilities = new utils(config.key);
+
   return {
-    earnings: new Earnings(config),
-    timeSeries: new TimeSeries(config),
-    apiUsage: new ApiUsage(config),
+    earnings: utilities.createFunc('earnings'),
+    timeSeries: utilities.createFunc('timeSeries'),
+    apiUsage: utilities.createFunc('apiUsage'),
+    stocks: utilities.createFunc('stocks'),
+    price: utilities.createFunc('price'),
+    earningsCalendar: utilities.createFunc('earningsCalendar')
   };
 };

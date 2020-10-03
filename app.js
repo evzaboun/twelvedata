@@ -10,7 +10,33 @@ const params = {
   interval:'1min'
 };
 
-twelvedata.timeSeries.getData(params).then(data => {
-  console.log(data);
+// time series
+twelvedata.timeSeries(params).then(data => {
+  console.log(JSON.stringify(data));
 });
 
+twelvedata.earnings({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
+
+twelvedata.apiUsage().then(data => {
+  console.log(JSON.stringify(data));
+});
+
+twelvedata.stocks(params).then(data => {
+  console.log(JSON.stringify(data));
+});
+
+twelvedata.price({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
+
+twelvedata.earningsCalendar({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
