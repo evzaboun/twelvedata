@@ -5,38 +5,46 @@ const config = {
 };
 
 const twelvedata = require("./index.js")(config);
+// const params = {
+//   symbol: "AAPL",
+//   interval: "1min",
+//   outputsize: 5,
+// };
 const params = {
-  symbol:'AAPL',
-  interval:'1min'
+  symbols: ["AAPL", "MSFT"],
+  intervals: ["1min", "5min"],
+  outputsize: 2,
 };
-
 // time series
-twelvedata.timeSeries(params).then(data => {
-  console.log(JSON.stringify(data));
-});
+// twelvedata.timeSeries(params).then((data) => {
+//   console.log(data);
+// });
 
-twelvedata.earnings({
-  symbol:'AAPL'
-}).then(data => {
-  console.log(JSON.stringify(data));
+twelvedata.complexData(params).then((data) => {
+  console.log(data);
 });
+// twelvedata.earnings({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
 
-twelvedata.apiUsage().then(data => {
-  console.log(JSON.stringify(data));
-});
+// twelvedata.apiUsage().then((data) => {
+//   console.log(data);
+// });
 
-twelvedata.stocks(params).then(data => {
-  console.log(JSON.stringify(data));
-});
+// twelvedata.stocks(params).then(data => {
+//   console.log(JSON.stringify(data));
+// });
 
-twelvedata.price({
-  symbol:'AAPL'
-}).then(data => {
-  console.log(JSON.stringify(data));
-});
+// twelvedata.price({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
 
-twelvedata.earningsCalendar({
-  symbol:'AAPL'
-}).then(data => {
-  console.log(JSON.stringify(data));
-});
+// twelvedata.earningsCalendar({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
