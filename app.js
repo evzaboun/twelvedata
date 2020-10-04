@@ -11,9 +11,16 @@ const twelvedata = require("./index.js")(config);
 //   outputsize: 5,
 // };
 const params = {
-  symbols: ["AAPL", "MSFT"],
-  intervals: ["1min", "5min"],
-  outputsize: 2,
+  symbols: ["AAPL", "MSFT", "GOOG"],
+  intervals: ["5min", "1day"],
+  outputsize: 5,
+  methods: [
+    "time_series",
+    {
+      name: "ema",
+      time_period: 12,
+    },
+  ],
 };
 // time series
 // twelvedata.timeSeries(params).then((data) => {
