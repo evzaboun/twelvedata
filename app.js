@@ -30,28 +30,29 @@ twelvedata.timeSeries(paramsGet).then((data) => {
 twelvedata.complexData(paramsPost).then((data) => {
   console.log(data);
 });
-// twelvedata.earnings({
-//   symbol:'AAPL'
-// }).then(data => {
-//   console.log(JSON.stringify(data));
-// });
 
-// twelvedata.apiUsage().then((data) => {
-//   console.log(data);
-// });
+twelvedata.earnings({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
 
-// twelvedata.stocks(paramsGet).then(data => {
-//   console.log(JSON.stringify(data));
-// });
+twelvedata.apiUsage().then((data) => {
+  console.log(data);
+});
 
-// twelvedata.price({
-//   symbol:'AAPL'
-// }).then(data => {
-//   console.log(JSON.stringify(data));
-// });
+twelvedata.stocks(paramsGet).then(data => {
+  console.log(JSON.stringify(data));
+});
 
-// twelvedata.earningsCalendar({
-//   symbol:'AAPL'
-// }).then(data => {
-//   console.log(JSON.stringify(data));
-// });
+twelvedata.price({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
+
+twelvedata.earningsCalendar({
+  symbol:'AAPL'
+}).then(data => {
+  console.log(JSON.stringify(data));
+});
