@@ -5,12 +5,12 @@ const config = {
 };
 
 const twelvedata = require("./index.js")(config);
-// const params = {
-//   symbol: "AAPL",
-//   interval: "1min",
-//   outputsize: 5,
-// };
-const params = {
+const paramsGet = {
+  symbol: "AAPL",
+  interval: "1min",
+  outputsize: 5,
+};
+const paramsPost = {
   symbols: ["AAPL", "MSFT", "GOOG"],
   intervals: ["5min", "1day"],
   outputsize: 5,
@@ -23,11 +23,11 @@ const params = {
   ],
 };
 // time series
-// twelvedata.timeSeries(params).then((data) => {
-//   console.log(data);
-// });
+twelvedata.timeSeries(paramsGet).then((data) => {
+  console.log(data);
+});
 
-twelvedata.complexData(params).then((data) => {
+twelvedata.complexData(paramsPost).then((data) => {
   console.log(data);
 });
 // twelvedata.earnings({
@@ -40,7 +40,7 @@ twelvedata.complexData(params).then((data) => {
 //   console.log(data);
 // });
 
-// twelvedata.stocks(params).then(data => {
+// twelvedata.stocks(paramsGet).then(data => {
 //   console.log(JSON.stringify(data));
 // });
 

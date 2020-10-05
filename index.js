@@ -2,6 +2,11 @@
 
 const utils = require("./lib/utilities.js");
 
+const requestTypes = {
+  get: 'get',
+  post: 'post'
+};
+
 module.exports = (config) => {
   if (!config) {
     throw new Error("Missing config");
@@ -14,12 +19,12 @@ module.exports = (config) => {
   const utilities = new utils(config.key);
 
   return {
-    earnings: utilities.createFunc("earnings", "get"),
-    timeSeries: utilities.createFunc("timeSeries", "get"),
-    apiUsage: utilities.createFunc("apiUsage", "get"),
-    stocks: utilities.createFunc("stocks", "get"),
-    price: utilities.createFunc("price", "get"),
-    earningsCalendar: utilities.createFunc("earningsCalendar", "get"),
-    complexData: utilities.createFunc("complexData", "post"),
+    earnings: utilities.createFunc("earnings", requestTypes.get),
+    timeSeries: utilities.createFunc("timeSeries", requestTypes.get),
+    apiUsage: utilities.createFunc("apiUsage", requestTypes.get),
+    stocks: utilities.createFunc("stocks", requestTypes.get),
+    price: utilities.createFunc("price", requestTypes.get),
+    earningsCalendar: utilities.createFunc("earningsCalendar", requestTypes.get),
+    complexData: utilities.createFunc("complexData", requestTypes.post),
   };
 };
