@@ -25,6 +25,7 @@ module.exports = (config) => {
     stocks: utilities.createFunc("stocks", requestTypes.get),
     price: utilities.createFunc("price", requestTypes.get),
     earningsCalendar: utilities.createFunc("earningsCalendar", requestTypes.get),
+    quote: utilities.createFunc('quote', requestTypes.get),
     complexData: utilities.createFunc("complexData", requestTypes.post),
   };
 };
