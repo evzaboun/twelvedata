@@ -1,13 +1,13 @@
 'use strict';
 
-const utils = require('./lib/utilities.js');
+import utils from './lib/utilities.js';
 
 const requestTypes = {
   get: 'get',
   post: 'post'
 };
 
-module.exports = (config) => {
+const twelvedata = (config) => {
   if (!config) {
     throw new Error('Missing config');
   }
@@ -38,3 +38,5 @@ module.exports = (config) => {
     timeSeries: utilities.createFunc('timeSeries', requestTypes.get)
   };
 };
+
+export default twelvedata;

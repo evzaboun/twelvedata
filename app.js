@@ -1,10 +1,14 @@
-require("dotenv").config();
+import dotenv from 'dotenv';
+import twelvedata from './index.js';
+
+// setup the key
 const config = {
-  base: "https://api.twelvedata.com",
-  key: process.env.API_KEY,
+  key: dotenv.config().parsed.API_KEY
 };
 
-const twelvedata = require("./index.js")(config);
+// init the client
+const client = twelvedata(config);
+
 const paramsGet = {
   symbol: "AAPL",
   interval: "1min",
@@ -22,37 +26,44 @@ const paramsPost = {
     },
   ],
 };
-// time series
-twelvedata.timeSeries(paramsGet).then((data) => {
-  console.log(data);
-});
 
-twelvedata.complexData(paramsPost).then((data) => {
-  console.log(data);
-});
+// use it
+// client.timeSeries(paramsGet).then((data) => {
+//   console.log(data);
+// });
 
-twelvedata.earnings({
-  symbol:'AAPL'
-}).then(data => {
+// client.complexData(paramsPost).then((data) => {
+//   console.log(data);
+// });
+
+// client.earnings({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
+
+// client.apiUsage().then((data) => {
+//   console.log(data);
+// });
+
+client.stocks(paramsGet).then(data => {
   console.log(JSON.stringify(data));
 });
 
-twelvedata.apiUsage().then((data) => {
-  console.log(data);
-});
+// client.price({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
 
-twelvedata.stocks(paramsGet).then(data => {
-  console.log(JSON.stringify(data));
-});
+// client.earningsCalendar({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });
 
-twelvedata.price({
-  symbol:'AAPL'
-}).then(data => {
-  console.log(JSON.stringify(data));
-});
-
-twelvedata.earningsCalendar({
-  symbol:'AAPL'
-}).then(data => {
-  console.log(JSON.stringify(data));
-});
+// client.quote({
+//   symbol:'AAPL'
+// }).then(data => {
+//   console.log(JSON.stringify(data));
+// });

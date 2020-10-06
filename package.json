@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple wrapper around the twelve data API",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
