@@ -62,7 +62,7 @@ params = {
 
  client.apiUsage().then((data) => {
     console.log(data);
-    // '{"timestamp":"2020-10-07 03:53:25","current_usage":0,"plan_limit":55}'
+    // {"timestamp":"2020-10-07 03:53:25","current_usage":0,"plan_limit":55}
  }).catch((error) => {
     // handle error
  });
