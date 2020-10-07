@@ -8,70 +8,68 @@ https://twelvedata.com/docs
 
 # Usage
 
-Install the npm package
+Install
 
-Pass the key
+```shell
+$ yarn add twelvedata
+```
 
-consume
-
-
-Available APIs
-
+Use it 
 
 ``` js
+// import the package
+
+import twelvedata from 'twelvedata';
+
+// setup the config
+
+const config = {
+  key: 'API_KEY'
+};
+
+// initialize and use the client
+
+const client = twelvedata(config);
+ 
+
 // time series
 
-const params = {
+let params = {
   symbol: "AAPL",
   interval: "1min",
   outputsize: 5
 };
 
- twelvedata.timeSeries(params).then((data) => {
-    // use data
+ client.timeSeries(params).then((data) => {
+    // consume array of data
  }).catch((error) => {
     // handle error
  });
-```
 
-``` js
 // earnings
 
-const params = {
+params = {
   symbol: "AAPL"
 };
 
- twelvedata.earnings(params).then((data) => {
-    // use data
+ client.earnings(params).then((data) => {
+    // use earnings data
  }).catch((error) => {
     // handle error
  });
-```
 
-``` js
 // api usage
 
- twelvedata.apiUsage().then((data) => {
-    // use data
+ client.apiUsage().then((data) => {
+    console.log(data);
+    // '{"timestamp":"2020-10-07 03:53:25","current_usage":0,"plan_limit":55}'
  }).catch((error) => {
     // handle error
  });
-```
 
-``` js
-// stocks
-
- twelvedata.stocks().then((data) => {
-    // use data
- }).catch((error) => {
-    // handle error
- });
-```
-
-``` js
 // complex data
 
-const params = {
+params = {
   symbols: ["AAPL", "MSFT", "GOOG"],
   intervals: ["5min", "1day"],
   outputsize: 5,
@@ -84,63 +82,46 @@ const params = {
   ],
 };
 
- twelvedata.complexData(params).then((data) => {
-    // use data
+ client.complexData(params).then((data) => {
+    // consume array of data
  }).catch((error) => {
     // handle error
  });
-```
 
-
-``` js
 // price
 
-const params = {
+params = {
   symbol: "AAPL"
 };
 
- twelvedata.price(params).then((data) => {
-    // use data
+ client.price(params).then((data) => {
+    console.log(data);
+    // {"price":"113.16000"}
  }).catch((error) => {
     // handle error
  });
-```
 
-``` js
 // cryptocurrencies
 
- twelvedata.cryptocurrencies().then((data) => {
-    // use data
+ client.cryptocurrencies().then((data) => {
+    // use crypto data
  }).catch((error) => {
     // handle error
  });
 ```
-
-``` js
-// quote
-
-const params = {
-  symbol: "AAPL"
-};
-
- twelvedata.quote(params).then((data) => {
-    // use data
- }).catch((error) => {
-    // handle error
- });
- ```
 
  The available API methods are following an universal approach, which is inline with the available backend endpoints. 
 
- > *  cryptocurrencyExchanges
- > *  earliestTimestamp
- > *  earningsCalendar
- > *  etf
- > *  exchanges
- > *  forexPairs
- > *  indices
- > *  symbolSearch
- > *  technicalIndicators
+  * cryptocurrencyExchanges
+  * earliestTimestamp
+  * earningsCalendar
+  * etf
+  * exchanges
+  * forexPairs
+  * indices
+  * symbolSearch
+  * technicalIndicators
+  * quote
 
 # Notice
 This is NOT an official Twelve Data library, and the authors of this library are not affiliated with Twelve Data in any way, shape or form. Twelve Data APIs and data are Copyright © 2020 Twelve Data Pte. Ltd.
