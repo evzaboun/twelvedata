@@ -9,11 +9,11 @@ const config = {
 // init the client
 const client = twelvedata(config);
 
-const paramsGet = {
-  symbol: "AAPL",
-  interval: "1min",
-  outputsize: 5,
-};
+// const paramsGet = {
+//   symbol: "AAPL",
+//   interval: "1min",
+//   outputsize: 5,
+// };
 const paramsPost = {
   symbols: ["AAPL", "MSFT", "GOOG"],
   intervals: ["5min", "1day"],
@@ -25,6 +25,13 @@ const paramsPost = {
       time_period: 12,
     },
   ],
+};
+
+const paramsGet = {
+  symbol: "AAPL",
+  interval: "1min",
+  outputsize: 5,
+  indicator: "stoch",
 };
 
 // use it
@@ -46,7 +53,11 @@ const paramsPost = {
 //   console.log(data);
 // });
 
-client.stocks(paramsGet).then(data => {
+// client.stocks(paramsGet).then(data => {
+//   console.log(JSON.stringify(data));
+// });
+
+client.technicalIndicators(paramsGet).then((data) => {
   console.log(JSON.stringify(data));
 });
 
