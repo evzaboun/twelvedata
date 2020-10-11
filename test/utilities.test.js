@@ -32,7 +32,7 @@ describe("utilities", () => {
         quote: "/quote",
         stocks: "/stocks",
         symbolSearch: "/symbol_search",
-        technicalIndicators: "/technical_indicators",
+        technicalIndicators: "/{indicator}",
         timeSeries: "/time_series",
       });
     });
@@ -43,7 +43,10 @@ describe("utilities", () => {
 
     beforeEach(() => {
       axios.request.mockImplementation(() => {
-        return Promise.resolve({ status: 200, data: ["AAPL", "MSFT"] });
+        return Promise.resolve({
+          status: 200,
+          data: ["AAPL", "MSFT"]
+        });
       });
       params = {
         symbol: "AAPL",
@@ -84,7 +87,10 @@ describe("utilities", () => {
 
     it("axios.request throws an error when status response is different from 200", (done) => {
       axios.request.mockImplementationOnce(() => {
-        return Promise.resolve({ status: 404, data: undefined });
+        return Promise.resolve({
+          status: 404,
+          data: undefined
+        });
       });
       const createFunction = utils.createFunc("technicalIndicators", "get");
 

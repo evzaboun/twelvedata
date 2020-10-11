@@ -39,9 +39,9 @@ const paramsGet = {
 //   console.log(data);
 // });
 
-// client.complexData(paramsPost).then((data) => {
-//   console.log(data);
-// });
+client.complexData(paramsPost).then((data) => {
+  console.log(data);
+});
 
 // client.earnings({
 //   symbol:'AAPL'
@@ -57,9 +57,9 @@ const paramsGet = {
 //   console.log(JSON.stringify(data));
 // });
 
-client.technicalIndicators(paramsGet).then((data) => {
-  console.log(JSON.stringify(data));
-});
+// client.technicalIndicators(paramsGet).then((data) => {
+//   console.log(JSON.stringify(data));
+// });
 
 // client.price({
 //   symbol:'AAPL'

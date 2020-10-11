@@ -1,4 +1,4 @@
-import TwelveData from '../';
+import TwelveData from '..';
 
 test(`initialization without a config throws an error`, () => {
   expect(() => TwelveData()).toThrow(`Missing config`);
@@ -9,7 +9,9 @@ test(`initialization without a config key throws an error`, () => {
 });
 
 test(`initialization with a config is succesfull`, () => {
-  const twelveData = TwelveData({key: 'a-key'});
+  const twelveData = TwelveData({
+    key: 'a-key'
+  });
 
   expect(twelveData).toBeDefined();
   expect(twelveData.apiUsage).toBeDefined();
