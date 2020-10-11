@@ -11,11 +11,8 @@ describe("utilities", () => {
 
   describe("getAvailableEndpoints", () => {
     it("i get successfully the available endpoints", () => {
-      //prepare
-
-      //execute
       const availableEndpoints = utils.getAvailableEndpoints();
-      //expect
+
       expect(availableEndpoints).toMatchObject({
         apiUsage: "/api_usage",
         complexData: "/complex_data",
@@ -92,6 +89,7 @@ describe("utilities", () => {
           data: undefined
         });
       });
+
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
@@ -105,6 +103,7 @@ describe("utilities", () => {
       axios.request.mockImplementationOnce(() => {
         return Promise.reject("Request failed");
       });
+
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
