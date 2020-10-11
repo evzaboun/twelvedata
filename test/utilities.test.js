@@ -72,34 +72,29 @@ describe("utilities", () => {
       });
     });
 
-    it("axios.request returns the proper data when response is 200", (done) => {
+    it("axios.request returns the proper data when response is 200", async () => {
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
-      requestPromise.then((res) => {
-        expect(res).toEqual(["AAPL", "MSFT"]);
-        done();
-      });
+
+      await expect(requestPromise).resolves.toEqual(["AAPL", "MSFT"]);
     });
 
-    it("axios.request throws an error when status response is different from 200", (done) => {
+    it("axios.request throws an error when status response is different from 200", async () => {
       axios.request.mockImplementationOnce(() => {
         return Promise.resolve({
           status: 404,
           data: undefined
         });
       });
-
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
-      requestPromise.catch((err) => {
-        expect(err).toMatch(`A twelve data API error occurred. 404`);
-        done();
-      });
+
+      await expect(requestPromise).rejects.toMatch(`A twelve data API error occurred. 404`);
     });
 
-    it("axios.request throws an error when request throws an error", (done) => {
+    it("axios.request throws an error when request throws an error", async () => {
       axios.request.mockImplementationOnce(() => {
         return Promise.reject("Request failed");
       });
@@ -107,10 +102,8 @@ describe("utilities", () => {
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
-      requestPromise.catch((err) => {
-        expect(err).toMatch(`Request failed`);
-        done();
-      });
+
+      await expect(requestPromise).rejects.toMatch(`Request failed`);
     });
   });
 });
