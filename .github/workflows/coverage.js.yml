@@ -28,9 +28,6 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
       
-    uses: mattallty/jest-github-action@v1
-  env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-with:
-  # To avoid reporting code coverage, set this variable to false
-  coverage-comment: false
+    - name: Jest Annotations & Coverage
+      uses: mattallty/jest-github-action@v1.0.3
+
