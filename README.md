@@ -1,5 +1,5 @@
 # twelvedata
-![Tests](https://github.com/evzaboun/twelvedata/workflows/Tests/badge.svg)
+![Tests](https://github.com/evzaboun/twelvedata/workflows/Tests/badge.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 A npm package for accessing Twelve Data's stock market APIs
 
