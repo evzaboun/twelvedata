@@ -19,7 +19,7 @@ Use it
 ```js
 // import the package
 
-import twelvedata from "twelvedata";
+const twelvedata = require("twelvedata");
 
 // setup the config
 

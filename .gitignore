@@ -7,3 +7,4 @@ yarn.lock
 .vscode/
 .env
 .DS_Store
+app.js
