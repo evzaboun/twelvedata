@@ -3,8 +3,9 @@ yarn.lock
 
 /node_modules
 /coverage
+/dist
 
 .vscode/
 .env
 .DS_Store
-app.js
+./app.js

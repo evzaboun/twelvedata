@@ -1,4 +1,4 @@
-import TwelveData from '..';
+import TwelveData from '../index.js';
 
 describe("index", () => {
   test(`initialization without a config throws an error`, () => {
