@@ -1,7 +1,7 @@
 import commonjs from "rollup-plugin-commonjs";
-import json from "rollup-plugin-json";
+import sourceMaps from "rollup-plugin-sourcemaps";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, copyFileSync } from "fs";
 import pkg from "./package.json";
 
 let numberOfBundlesBuilt = 0;
@@ -38,17 +38,20 @@ export function initRollupPostScript() {
       `./dist/package.json`,
       JSON.stringify(internalPackageJson, null, 2)
     );
+
+    copyFileSync("README.md", "dist/README.md");
+    copyFileSync("LICENSE.txt", "dist/LICENSE.txt");
   } catch (Error) {
     console.error("Post script failed", Error);
   }
 }
 export default {
-  input: pkg.source,
+  input: "index.js",
   output: outputBundles,
   external: [...Object.keys(pkg.dependencies || {})],
 
   plugins: [
-    json(),
+    sourceMaps(),
     nodeResolve({
       mainFields: ["module", "browser"],
       preferBuiltins: false,

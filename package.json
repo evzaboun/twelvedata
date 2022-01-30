@@ -2,10 +2,10 @@
   "name": "twelvedata",
   "version": "2.0.0",
   "description": "A simple wrapper around the twelve data API",
-  "source": "index.js",
   "main": "dist/twelvedata.js",
   "module": "dist-esm/twelvedata.js",
   "browser": "dist/twelvedata.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c && npx tsc",
     "test": "jest"
@@ -22,9 +22,6 @@
     "data",
     "twelvedata",
     "twelve-data"
-  ],
-  "files": [
-    "dist/twelvedata.js"
   ],
   "author": "Zampounis Evangelos, Zampounis Filippos",
   "license": "MIT",
@@ -47,6 +44,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
     "typescript": "^4.5.5"
   },
   "jest": {
