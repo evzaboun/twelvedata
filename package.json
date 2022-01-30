@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/evzaboun/twelvedata#readme",
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.25.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
