@@ -4,6 +4,8 @@
   "description": "A simple wrapper around the twelve data API",
   "source": "index.js",
   "main": "dist/twelvedata.js",
+  "module": "dist-esm/twelvedata.js",
+  "browser": "dist/twelvedata.js",
   "scripts": {
     "build": "rollup -c && npx tsc",
     "test": "jest"

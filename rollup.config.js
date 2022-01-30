@@ -26,7 +26,6 @@ export function initRollupPostScript() {
     delete internalPackageJson.scripts;
     delete internalPackageJson.devDependencies;
     delete internalPackageJson.jest;
-    delete internalPackageJson.main;
     delete internalPackageJson.files;
     delete internalPackageJson.source;
 
@@ -46,10 +45,7 @@ export function initRollupPostScript() {
 export default {
   input: pkg.source,
   output: outputBundles,
-  external: [
-    ...Object.keys(pkg.devDependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
-  ],
+  external: [...Object.keys(pkg.dependencies || {})],
 
   plugins: [
     json(),
