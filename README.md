@@ -19,7 +19,11 @@ Use it
 ```js
 // import the package
 
-const twelvedata = require("twelvedata");
+const twelvedata = require("twelvedata"); // CommonJS
+
+// or
+
+import twelvedata from "twelvedata"; // ES6 import
 
 // setup the config
 
