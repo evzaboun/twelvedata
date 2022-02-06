@@ -8,23 +8,31 @@ https://twelvedata.com/docs
 
 # Usage
 
-Install
+Browser:
+
+```js
+import twelvedata from "https://unpkg.com/twelvedata@latest/twelvedata.js?module";
+```
+
+Node.js
 
 ```shell
 $ yarn add twelvedata
 ```
 
-Use it
-
 ```js
 // import the package
-
+// Node.js
 const twelvedata = require("twelvedata"); // CommonJS
 
 // or
 
 import twelvedata from "twelvedata"; // ES6 import
+```
 
+Use it
+
+```js
 // setup the config
 
 const config = {

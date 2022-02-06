@@ -1,10 +1,14 @@
 import commonjs from "rollup-plugin-commonjs";
 import sourceMaps from "rollup-plugin-sourcemaps";
 import nodeResolve from "@rollup/plugin-node-resolve";
+import json from "rollup-plugin-json";
 import { readFileSync, writeFileSync, copyFileSync } from "fs";
 import pkg from "./package.json";
 
 let numberOfBundlesBuilt = 0;
+
+//const externalDependencies = ["axios"];
+
 let outputBundles = [
   {
     file: "./dist/dist/twelvedata.js",
@@ -16,7 +20,6 @@ let outputBundles = [
     format: "es",
   },
 ];
-const externalDependencies = ["axios"];
 
 export function initRollupPostScript() {
   try {
@@ -48,15 +51,21 @@ export function initRollupPostScript() {
 export default {
   input: "index.js",
   output: outputBundles,
-  external: [...Object.keys(pkg.dependencies || {})],
+  //external: [...Object.keys(pkg.dependencies || {})],
 
   plugins: [
     sourceMaps(),
     nodeResolve({
       mainFields: ["module", "browser"],
+      browser: true,
       preferBuiltins: false,
     }),
-    commonjs(),
+    commonjs({
+      include: "node_modules/**",
+    }),
+    json({
+      compact: true,
+    }),
     {
       name: "buildHooks",
       writeBundle() {
