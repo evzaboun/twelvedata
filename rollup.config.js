@@ -3,12 +3,10 @@ import sourceMaps from "rollup-plugin-sourcemaps";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import json from "rollup-plugin-json";
 import { readFileSync, writeFileSync, copyFileSync } from "fs";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 import pkg from "./package.json";
 
 let numberOfBundlesBuilt = 0;
-
-//const externalDependencies = ["axios"];
-
 let outputBundles = [
   {
     file: "./dist/dist/twelvedata.js",
@@ -32,11 +30,6 @@ export function initRollupPostScript() {
     delete internalPackageJson.files;
     delete internalPackageJson.source;
 
-    Object.keys(internalPackageJson.dependencies).forEach((dep) => {
-      if (externalDependencies.indexOf(dep) < 0) {
-        delete internalPackageJson.dependencies[dep];
-      }
-    });
     writeFileSync(
       `./dist/package.json`,
       JSON.stringify(internalPackageJson, null, 2)
@@ -51,14 +44,14 @@ export function initRollupPostScript() {
 export default {
   input: "index.js",
   output: outputBundles,
-  //external: [...Object.keys(pkg.dependencies || {})],
-
+  external: ["cross-fetch", "cross-fetch/polyfill"],
   plugins: [
     sourceMaps(),
+    nodePolyfills(),
     nodeResolve({
-      mainFields: ["module", "browser"],
+      mainFields: ["jsnext", "main"],
+      preferBuiltins: true,
       browser: true,
-      preferBuiltins: false,
     }),
     commonjs({
       include: "node_modules/**",
