@@ -1,8 +1,9 @@
 import Utilities from "../lib/utilities";
-import axios from "axios";
+import crossFetch from "cross-fetch";
 
-jest.mock("axios");
-
+jest.mock("cross-fetch", () => {
+  return jest.fn();
+});
 describe("utilities", () => {
   let utils;
   beforeEach(() => {
@@ -39,10 +40,10 @@ describe("utilities", () => {
     let params;
 
     beforeEach(() => {
-      axios.request.mockImplementation(() => {
+      crossFetch.mockImplementation(() => {
         return Promise.resolve({
           status: 200,
-          data: ["AAPL", "MSFT"]
+          json: () => Promise.resolve(["AAPL", "MSFT"]),
         });
       });
       params = {
@@ -59,20 +60,25 @@ describe("utilities", () => {
       expect(typeof createFunction).toBe("function");
     });
 
-    it("axios.request is called with proper parameters", () => {
+    it("fetch is called with proper parameters", () => {
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       createFunction(params);
 
-      expect(axios.request).toHaveBeenCalledWith({
-        method: "get",
-        url: "/stoch?apikey=apiKey",
-        data: params,
-        params: params,
-      });
+      expect(crossFetch).toHaveBeenCalledWith(
+        "https://api.twelvedata.com/stoch?symbol=AAPL&interval=1min&outputsize=5&indicator=stoch&apikey=apiKey",
+        {
+          cache: "no-cache",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "get",
+        }
+      );
     });
 
-    it("axios.request returns the proper data when response is 200", async () => {
+    it("fetch returns the proper data when response is 200", async () => {
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
@@ -80,22 +86,24 @@ describe("utilities", () => {
       await expect(requestPromise).resolves.toEqual(["AAPL", "MSFT"]);
     });
 
-    it("axios.request throws an error when status response is different from 200", async () => {
-      axios.request.mockImplementationOnce(() => {
+    it("fetch throws an error when status response is different from 200", async () => {
+      crossFetch.mockImplementationOnce(() => {
         return Promise.resolve({
           status: 404,
-          data: undefined
+          json: () => Promise.reject(["AAPL", "MSFT"]),
         });
       });
       const createFunction = utils.createFunc("technicalIndicators", "get");
 
       const requestPromise = createFunction(params);
 
-      await expect(requestPromise).rejects.toMatch(`A twelve data API error occurred. 404`);
+      await expect(requestPromise).rejects.toMatch(
+        `A twelve data API error occurred. 404`
+      );
     });
 
-    it("axios.request throws an error when request throws an error", async () => {
-      axios.request.mockImplementationOnce(() => {
+    it("fetch throws an error when request throws an error", async () => {
+      crossFetch.mockImplementationOnce(() => {
         return Promise.reject("Request failed");
       });
 
