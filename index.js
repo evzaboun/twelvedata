@@ -1,11 +1,7 @@
 "use strict";
 
-const utils = require("./lib/utilities.js");
-
-const requestTypes = {
-  get: "get",
-  post: "post",
-};
+import utils from "./lib/utilities.js";
+import requestTypes from "./lib/types.js";
 
 const twelvedata = (config) => {
   if (!config) {
@@ -54,4 +50,4 @@ const twelvedata = (config) => {
   };
 };
 
-module.exports = twelvedata;
+export default twelvedata;
