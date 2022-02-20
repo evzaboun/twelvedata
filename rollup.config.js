@@ -1,7 +1,7 @@
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import sourceMaps from "rollup-plugin-sourcemaps";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import json from "rollup-plugin-json";
+import json from "@rollup/plugin-json";
 import { readFileSync, writeFileSync, copyFileSync } from "fs";
 import nodePolyfills from "rollup-plugin-node-polyfills";
 import pkg from "./package.json";
