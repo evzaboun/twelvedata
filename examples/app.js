@@ -1,4 +1,4 @@
-import twelvedata from "../dist/dist-esm/twelvedata.js";
+import twelvedata from "https://unpkg.com/twelvedata@latest/dist-esm/twelvedata.js?module";
 
 // setup the key
 const config = {
