@@ -3,7 +3,6 @@ yarn.lock
 
 /node_modules
 /coverage
-/dist
 
 .vscode/
 .env
