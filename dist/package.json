@@ -1,6 +1,6 @@
 {
   "name": "twelvedata",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple wrapper around the twelve data API",
   "main": "dist/twelvedata.js",
   "module": "dist-esm/twelvedata.js",

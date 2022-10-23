@@ -1,44 +1,45 @@
-# twelvedata
+# Twelvedata
 
 ![Tests](https://github.com/evzaboun/twelvedata/workflows/Tests/badge.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-A npm package for accessing Twelve Data's stock market APIs
+A npm package to access Twelve Data's stock market APIs. NodeJS and Browser (Vanila JS or frameworks like ReactJS) supported using Javascript or Typescript.
 
 https://twelvedata.com/docs
 
-# Usage (TypeScript is supported)
+Install
 
-Browser:
+```shell
+$ yarn add twelvedata
+
+// or
+
+$ npm install twelvedata --save
+```
+
+Import on NodeJS or ReactJS
 
 ```js
-// On your .html file:
+// CommonJS import for NodeJS.
+const twelvedata = require("twelvedata");
 
+// or
+
+// ES6 import for React/NodeJS versions > 15.3.0
+import twelvedata from "twelvedata";
+
+// "type": "module" on your package.json file will be required.
+```
+
+Load straight on the browser in your HTML page
+
+```js
+// Your .html file
 <script type="module" src="./app.js"></script>
 ```
 
 ```js
-// On your app.js file:
-
+// App.js file
 import twelvedata from "https://unpkg.com/twelvedata@latest/dist-esm/twelvedata.js?module";
-```
-
-Node.js
-
-```shell
-$ yarn add twelvedata
-```
-
-```js
-// import the package
-// Node.js
-const twelvedata = require("twelvedata"); // CommonJS
-
-// or
-
-import twelvedata from "twelvedata"; // ES6 import
-
-// In this case do not forget to set:
-// "type": "module" on your package.json file
 ```
 
 Use it
@@ -179,7 +180,7 @@ If you want to contribute, feel free to submit a pull request.
 
 # Donating
 
-### If you found this project useful, consider donating.
+If you found this project useful, consider donating.
 
 ```
 BTC: bc1qy3vudcfalr6ur9x2wqldlxja9hjah6hts0cje5

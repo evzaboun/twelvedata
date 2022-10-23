@@ -48,8 +48,8 @@
     }
 
     createFunc(endpointName, requestType) {
-      let url = this.getAvailableEndpoints()[endpointName];
       return async (params) => {
+        let url = this.getAvailableEndpoints()[endpointName];
         if (params) {
           url = url.replace("{indicator}", params.indicator);
         }
