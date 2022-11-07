@@ -35,6 +35,7 @@ const twelvedata = (config) => {
       requestTypes.get
     ),
     etf: utilities.createFunc("etf", requestTypes.get),
+    eod: utilities.createFunc("eod", requestTypes.get),
     exchanges: utilities.createFunc("exchanges", requestTypes.get),
     forexPairs: utilities.createFunc("forexPairs", requestTypes.get),
     indices: utilities.createFunc("indices", requestTypes.get),
