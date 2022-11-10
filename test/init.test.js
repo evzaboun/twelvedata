@@ -23,6 +23,7 @@ describe("index", () => {
     expect(twelveData.earnings).toBeDefined();
     expect(twelveData.earningsCalendar).toBeDefined();
     expect(twelveData.etf).toBeDefined();
+    expect(twelveData.eod).toBeDefined();
     expect(twelveData.exchanges).toBeDefined();
     expect(twelveData.forexPairs).toBeDefined();
     expect(twelveData.indices).toBeDefined();
